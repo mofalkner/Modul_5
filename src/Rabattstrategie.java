@@ -1,21 +1,21 @@
 public abstract class Rabattstrategie
 {
-    private String strategie;
+    private String bezeichnung;
 
-    public Rabattstrategie(String strategie)
+    public Rabattstrategie(String bezeichnung)
     {
-        setStrategie(strategie);
+        setBezeichnung(bezeichnung);
     }
 
     public abstract double getReduzierterPreis(double reguPreis);
 
-    public String getStrategie()
+    public String getBezeichnung()
     {
-        return strategie;
+        return bezeichnung;
     }
 
-    public void setStrategie(String strategie)
+    public void setBezeichnung(String bezeichnung)
     {
-        this.strategie = strategie;
+        this.bezeichnung = bezeichnung;
     }
 }
