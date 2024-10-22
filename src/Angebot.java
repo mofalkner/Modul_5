@@ -1,25 +1,27 @@
 import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class Angebot
 {
     private double regupreis;
-    private LocalDate flugdatum;
+    private GregorianCalendar flugdatum;
     private String flugnummer;
     private double redupreis;
     Rabattstrategie rabattstrategie;
 
-    public Angebot(double regupreis, LocalDate flugdatum, String flugnummer)
-    {
-        setFlugdatum(flugdatum);
-        setRegupreis(regupreis);
-        setFlugnummer(flugnummer);
+    public Angebot(double regupreis, GregorianCalendar flugdatum, String flugnummer) {
+        this.regupreis = regupreis;
+        this.flugdatum = flugdatum;
+        this.flugnummer = flugnummer;
         getStrategiemitDatum();
         redupreis = getRedupreis();
     }
 
     public void getStrategiemitDatum()
     {
-        int monat = flugdatum.getMonthValue();
+        int monat = flugdatum.get(Calendar.MONTH) + 1;
+
         if (monat == 1 || monat == 4 || monat == 10)
         {
             this.rabattstrategie = new MaxiDiscount();
@@ -41,7 +43,7 @@ public class Angebot
 
     public void anzeigen()
     {
-        System.out.println("Regulärer Preis: " + this.regupreis + " | Flugdatum: " + this.flugdatum + " | Flugnummer: " + this.flugnummer);
+        System.out.println("Regulärer Preis: " + this.regupreis + " | Flugdatum: " + this.flugdatum.getTime() + " | Flugnummer: " + this.flugnummer);
         System.out.println("Rabattierter Preis: " + this.redupreis + " | Strategie: " + this.rabattstrategie.getBezeichnung());
     }
 
@@ -61,11 +63,11 @@ public class Angebot
         this.flugnummer = flugnummer;
     }
 
-    public LocalDate getFlugdatum() {
+    public GregorianCalendar getFlugdatum() {
         return flugdatum;
     }
 
-    public void setFlugdatum(LocalDate flugdatum) {
+    public void setFlugdatum(GregorianCalendar flugdatum) {
         this.flugdatum = flugdatum;
     }
 }
