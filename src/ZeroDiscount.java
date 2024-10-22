@@ -5,6 +5,7 @@ public class ZeroDiscount extends Rabattstrategie
         super ("ZeroDiscount");
     }
 
+    @Override
     public double getReduzierterPreis(double regupreis)
     {
         return regupreis;
